@@ -1,17 +1,17 @@
 # CatchExceptionResponse
 
-Foram criados algumas exceptions customizadas para tratar os erros retornados pelo back end que sempre temos problemas... as execptions criadas foram para atender aos seguintes erros
+Some custom exceptions were created to handle the errors returned by the back end that we always have problems ... the execptions created were to address the following errors.
 ```
 401 (Unauthorized)
 403 (Forbidden)
 422 (Unprocessable Entity)
 424 (Failed Dependency)
 ```
-e mais duas, uma erro genericoo e outra para NetworkException
+and two more, one generic error and one for NetworkException
 
-Essa nova funcionalidade elimina a necessidade de tratar os tipos erros usando codigos https muitas vezes usando no ViewModel, agora será necessário somente tratrar a exception já que essa nova funçao intercepta o Response<T> verifica se foi sucesso ou não e trata os codigos de HTTP e cria a exception correta para cada um tipo.
+This new functionality eliminates the need to handle error types using https codes often using ViewModel, now you only need to handle the exception since this new function intercepts Response <T> checks for success or not and handles HTTP codes. and creates the correct exception for each type.
 
-Para usar essa nova função tem dois caminhos, um usando intercpetor adicionando direto no retrofit.
+To use this new function has two paths, one using interceptor adding straight into the retrofit.
 ```
 val interceptorResponse = Interceptor { chain ->
             val originalResponse = chain.proceed(chain.request())
@@ -20,7 +20,7 @@ val interceptorResponse = Interceptor { chain ->
 
 client.addInterceptor(interceptor)
 ```
-mas essa abordagem é complicada pq toda e qualquer requisição vai ser tratada dessa forma, òutra forma seria tratar isso nos respositories usando as chamadas de rx com a extension function.
+but this approach is complicated because any and all requests will be handled this way, otherwise it would be to handle it in respositories using Rx calls with the extension function.
 ```
 override fun requestPeriods(customerId: String): Single<List<InvoicePeriod>> {
         return creditInvoicesService
@@ -33,7 +33,7 @@ override fun requestPeriods(customerId: String): Single<List<InvoicePeriod>> {
             }
     }
 ```
-pronto assim a extension interfere na requisisção trata o retorno e se for preciso lança a exception e tudo que vc tem que fazer é tratar a exception no viewmodel ou na activity etomar a decissão correta.
+so the extension interferes with the request treats the return and if necessary throws the exception and all you have to do is handle the exception in viewmodel or activity and make the correct decision.
 ```
 subscribe({
               Log.d("Retorno Api", "Sucesso $it")
