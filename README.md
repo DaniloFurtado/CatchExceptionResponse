@@ -63,3 +63,21 @@ subscribe({
                 })              
 
 ```
+
+import Library
+
+gradle project
+```
+allprojects {
+    repositories {
+         ...
+         maven { url 'https://jitpack.io' }
+    }
+}
+```
+app gradle
+```
+dependencies {
+       implementation 'com.github.DaniloFurtado:CatchExceptionResponse:0.1.0'
+}
+```
