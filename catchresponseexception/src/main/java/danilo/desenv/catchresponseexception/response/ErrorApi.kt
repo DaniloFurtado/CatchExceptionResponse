@@ -4,11 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 data class ErrorApi(
     @SerializedName("property")
-    val property: String,
+    val property: String?,
     @SerializedName("value")
-    val value: String,
+    val value: String?,
     @SerializedName("message")
-    val message: String,
+    val message: String?,
     @SerializedName("constraint")
     val constraint: ConstraintApi
 )
