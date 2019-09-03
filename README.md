@@ -78,6 +78,6 @@ allprojects {
 app gradle
 ```
 dependencies {
-       implementation 'com.github.DaniloFurtado:CatchExceptionResponse:0.1.0'
+       implementation 'com.github.DaniloFurtado:CatchExceptionResponse:0.1.1'
 }
 ```
